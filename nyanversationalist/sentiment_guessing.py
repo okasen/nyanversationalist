@@ -113,7 +113,7 @@ word_features = get_word_features(get_words_for_features(tweets))
 
 
 
-training_new_set = True
+training_new_set = False
 if training_new_set:
     print("getting ready")
     training_set = nltk.classify.apply_features(extract_features_from_document, tweets)
@@ -128,15 +128,32 @@ else:
     classifier = pickle.load(f)
     f.close()
 
-success = 0
-failures = 0
-for _,tweet in test.iterrows():
-    classified = classifier.classify(extract_features_from_document(tweet.text.split()))
-    print(classified)
-    print(tweet.sentiment)
-    if classified == tweet.sentiment:
-        success += 1
-    else:
-        failures += 1
 
-print(success / (success + failures))
+def check_sentiment_guessing():
+    success = 0
+    failures = 0
+    for _,tweet in test.iterrows():
+        classified = classifier.classify(extract_features_from_document(tweet.text.split()))
+        print(classified)
+        print(tweet.sentiment)
+        if classified == tweet.sentiment:
+            print(tweet.text)
+            print(tweet.sentiment)
+            success += 1
+        else:
+            failures += 1
+
+    print(success / (success + failures))
+
+tweets = test.iterrows()
+tweet = [tweet for _, tweet in tweets][0]
+print(type(tweet.text.split()))
+print(tweet.text.split())
+classification = classifier.classify(extract_features_from_document(tweet.text.split()))
+print(classification)
+
+print("Now see if it can guess YOUR SENTIMENT:")
+user_input = input()
+print(user_input.split())
+classification = classifier.classify(extract_features_from_document(user_input.split()))
+print(classification)

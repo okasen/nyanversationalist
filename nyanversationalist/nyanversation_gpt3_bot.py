@@ -97,8 +97,4 @@ def converse() -> None:
 print("should we start up Nyan?")
 should_converse = input()
 if should_converse == "Y":
-    conversing = True
-else:
-    conversing = False
-
-converse()
+    converse()

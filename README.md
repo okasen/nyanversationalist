@@ -16,7 +16,7 @@ Update: I've successfully run the chatbot locally and had some very interesting 
 * I would like to find a way to check/filter what Nyan (the GPT-3 bot) says before the tweet is sent. I do not want to risk her generating hate speech
 
 # NEXT ACTIONS
-* I'm going to read more on TensorFlow/Keras to see if it meets my needs.
+* I'm going to read more on TensorFlow/Keras to see if it meets my needs. The book Deep Learning with Python has been helpful so far!
 
 # HOW TO RUN THIS LOCALLY:
 * Right now, you can run sentiment_guessing.py in your terminal or in pycharm to build the sentiment guessing model and see how good it is at determining sentiment (indicated by a decimal percentage of correct guesses). There is a very makeshift way of determining if you want to retrain the model or not (setting variable training_new_set True to retrain), which will be improved by splitting the model training into its own module.
